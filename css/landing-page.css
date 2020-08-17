@@ -79,6 +79,44 @@ header.masthead h1 {
   max-width: 20rem;
 }
 
+/* ++++++++++++++++++++ COLORES ++++++++++++++++++++++++ */
+.fas {
+  color: #fcd948!important;
+  /* #1d1d1d negro */
+}
+
+.btn-primary {
+  color: #1d1d1d;
+  background-color: #fcd948;
+  border-color: #fcd948;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  color: #1d1d1d;
+  background-color: #d9bc43;
+  border-color: #d9bc43;
+}
+
+.fab {
+  color: #fcd948;
+}
+
+.fab:hover {
+  color: #d9bc43;
+}
+
+.lista {
+  color: #fcd948!important;
+}
+
+.abc {
+  color: #1d1d1d;
+}
+
+.abc:hover {
+  color: #fcd948;
+}
+
 .features-icons .features-icons-item .features-icons-icon {
   height: 7rem;
 }
