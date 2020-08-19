@@ -45,7 +45,7 @@
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
       <img src="img/6.png" width="150" alt="" class="d-inline-block align-middle mr-2">
-      <a class="btn btn-primary" href="mailto:info@saveatnow.com?subject=Contacto Web Saveat!&body=Gracias por ponerte en contacto con nosotros! Escríbenos lo que necesites y te responderemos a la brevedad!">¡Contáctanos!</a>
+      <a class="btn btn-primary" href="mailto:info@saveatnow.com?subject=Contacto Web Saveat!&body=Gracias por ponerte en contacto con nosotros! Escríbenos lo que necesites y te responderemos a la brevedad!">Contáctanos</a>
     </div>
   </nav>
 
@@ -58,13 +58,13 @@
           <h1 class="mb-5">¡Uniendo locales y consumidores para disminuir la cantidad de alimentos desechados!</h1>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
+          <form method="POST" autocomplete="off" name="google-sheet-interesados">
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="text" class="form-control form-control-lg" placeholder="Ingresa tu mail y te contamos más!">
+                <input type="text" name="Email" class="form-control form-control-lg" placeholder="¡Ingresa tu mail y te contamos más!" value="" required="">
               </div>
               <div class="col-12 col-md-3">
-                <button type="submit"  class="btn-block btn btn-block btn-lg btn-primary">¡Avisame!</button>
+                <button type="submit" name="submit" class="btn-block btn btn-block btn-lg btn-primary">¡Avisame!</button>
               </div>
             </div>
           </form>
@@ -116,9 +116,9 @@
         <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/bg-showcase-1.jpg');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>Salvemos el planeta</h2>
-          <p class="lead mb-0">- Un tercio de la comida producida a nivel mundial se desperdicia.
-            <br />- 10% de los gases de efecto invernadero son producido por el desperdicio de comida.
-            <br />- En Chile se botan más de 3,7 millones de toneladas de comida al año. </p>
+          <p class="lead mb-0">Un tercio de la comida producida a nivel mundial se desperdicia.
+            <br />10% de los gases de efecto invernadero son producido por el desperdicio de comida.
+            <br />En Chile se botan más de 3,7 millones de toneladas de comida al año. </p>
         </div>
       </div>
       <div class="row no-gutters">
@@ -196,7 +196,7 @@
                           <input type="number" name="Phone" class="form-control form-control form-control-lg" placeholder="Número de Teléfono *" value="" required="" />
                         </div>
                         <div class="form-group">
-                          <input type="text" name="Restaurante" class="form-control form-control form-control-lg" placeholder="Nombre Restaurante *" value="" required="" />
+                          <input type="text" name="Restaurante" class="form-control form-control form-control-lg" placeholder="Nombre Restaurante o Local *" value="" required="" />
                         </div>
                         <div class="form-group">
                           <input type="submit" name="submit" class="btnSubmit btn-block btn btn-block btn-lg btn-primary" value="¡Contáctanos!" />
@@ -264,6 +264,7 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Google Sheets Restaurantes -->
   <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyB5Qcnop6IhfhR17W1Jegik2DywXQPsA_bAe7rNmVi8xHDm7k/exec'
     const form = document.forms['google-sheet']
@@ -273,6 +274,22 @@
       fetch(scriptURL, {
           method: 'POST',
           body: new FormData(form)
+        })
+        .then(response => alert("Gracias por tu interés! Nos pondremos en contacto contigo pronto!"))
+        .catch(error => console.error('Error!', error.message))
+    })
+
+
+  <!-- Google Sheets Interesados -->
+
+    const scriptURL1 = 'https://script.google.com/macros/s/AKfycbwYRPM5TuB6uXw7MiiJKDh0zL3C9vJHs75nY_xCalmgNZOUnAM/exec'
+    const form1 = document.forms['google-sheet-interesados']
+
+    form1.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL1, {
+          method: 'POST',
+          body: new FormData(form1)
         })
         .then(response => alert("Gracias por tu interés! Nos pondremos en contacto contigo pronto!"))
         .catch(error => console.error('Error!', error.message))
