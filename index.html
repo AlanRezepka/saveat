@@ -37,7 +37,6 @@
   <meta property="og:locale:alternate" content="es_ES" />
   <link rel="apple-touch-icon" sizes="128x128" href="img/appstoreog.png">
 
-
 </head>
 
 <body>
@@ -62,10 +61,10 @@
           <form>
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="email" class="form-control form-control-lg" placeholder="Ingresa tu mail y te contamos más!">
+                <input type="text" class="form-control form-control-lg" placeholder="Ingresa tu mail y te contamos más!">
               </div>
               <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">¡Avisame!</button>
+                <button type="submit"  class="btn-block btn btn-block btn-lg btn-primary">¡Avisame!</button>
               </div>
             </div>
           </form>
@@ -118,8 +117,8 @@
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>Salvemos el planeta</h2>
           <p class="lead mb-0">- Un tercio de la comida producida a nivel mundial se desperdicia.
-            <br/>- 10% de los gases de efecto invernadero son producido por el desperdicio de comida.
-            <br/>- En Chile se botan más de 3,7 millones de toneladas de comida al año. </p>
+            <br />- 10% de los gases de efecto invernadero son producido por el desperdicio de comida.
+            <br />- En Chile se botan más de 3,7 millones de toneladas de comida al año. </p>
         </div>
       </div>
       <div class="row no-gutters">
@@ -127,7 +126,7 @@
         <div class="col-lg-6 my-auto showcase-text">
           <h2>¡Es hora de tomar acción!</h2>
           <p class="lead mb-0">En Saveat buscamos dar solución a ese problema ofreciendo una plataforma que una
-          consumidores con locales para que puedan vender la merma al final del día. </p>
+            consumidores con locales para que puedan vender la merma al final del día. </p>
         </div>
       </div>
       <div class="row no-gutters">
@@ -135,7 +134,7 @@
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>Ayuda a tu bolsillo en el proceso </h2>
           <p class="lead mb-0">Locales ven un aumento en sus ingresos pudiendo vender más al final del día.
-            <br/> Consumidores pueden optar por precios reducidos y ahorrar en el proceso.</p>
+            <br /> Consumidores pueden optar por precios reducidos y ahorrar en el proceso.</p>
         </div>
       </div>
     </div>
@@ -177,19 +176,38 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-9 mx-auto">
-          <h2 class="mb-4">¿Eres restaurante y estás interesado? ¡Contáctanos!</h2>
+          <h2 class="mb-4">¿Eres restaurante y estás interesado?</h2>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="email" class="form-control form-control-lg" placeholder="Ingresa tu mail...">
-              </div>
-              <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">¡Contáctanos!</button>
+          <div class="container register">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="row register-form">
+                    <div class="col-md-12">
+                      <form method="post" autocomplete="off" name="google-sheet">
+                        <div class="form-group">
+                          <input type="text" name="Name" class="form-control form-control form-control-lg" placeholder="Nombre *" value="" required="" />
+                        </div>
+                        <div class="form-group">
+                          <input type="text" name="Email" class="form-control form-control form-control-lg" placeholder="Email *" value="" required="" />
+                        </div>
+                        <div class="form-group">
+                          <input type="number" name="Phone" class="form-control form-control form-control-lg" placeholder="Número de Teléfono *" value="" required="" />
+                        </div>
+                        <div class="form-group">
+                          <input type="text" name="Restaurante" class="form-control form-control form-control-lg" placeholder="Nombre Restaurante *" value="" required="" />
+                        </div>
+                        <div class="form-group">
+                          <input type="submit" name="submit" class="btnSubmit btn-block btn btn-block btn-lg btn-primary" value="¡Contáctanos!" />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -246,6 +264,23 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyB5Qcnop6IhfhR17W1Jegik2DywXQPsA_bAe7rNmVi8xHDm7k/exec'
+    const form = document.forms['google-sheet']
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(response => alert("Gracias por tu interés! Nos pondremos en contacto contigo pronto!"))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 
 </html>
